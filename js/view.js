@@ -6,10 +6,11 @@
     }
 
     // render 함수
-    render(page) {
+    async render(page) {
       if (page === "Board") {
+        let board = await this.model.getBoard();
         document.querySelector("#root").innerHTML = this.templates.Board(
-          this.model.board.lists
+          board.lists
         );
       }
     }

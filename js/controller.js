@@ -7,8 +7,8 @@
     }
 
     // 페이지 리프레쉬
-    refresh(page) {
-      this.view.render(page);
+    async refresh(page) {
+      await this.view.render(page);
       this.setEvents();
     }
 
