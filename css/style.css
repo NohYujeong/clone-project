@@ -1,0 +1,154 @@
+body {
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+p {
+  padding: 4px;
+  margin: 4px;
+  display: block;
+  overflow-wrap: break-word;
+}
+
+button:focus {
+  outline: none;
+}
+
+.navbar {
+  padding: 16px 32px;
+  font-size: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+.main-container {
+  height: calc(100vh - 56px);
+  background-color: #e7e7e7;
+  padding: 16px;
+}
+
+.add-list {
+  border: none;
+  border-radius: 4px;
+  background-color: #cacaca;
+  margin: 0 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: opacity 0.5s;
+}
+
+.add-list:hover {
+  opacity: 0.7;
+}
+
+.lists-wrapper {
+  display: flex;
+}
+
+.list-header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  height: 30px;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.list {
+  width: 240px;
+  height: 100%;
+  max-height: calc(100vh - 56px);
+  overflow: auto;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.list + .list {
+  margin-left: 12px;
+}
+
+.item {
+  background-color: white;
+  border: 1px solid #b9b9b9;
+  border-radius: 4px;
+}
+
+textarea + .item,
+textarea + .drag-preview {
+  margin-top: 12px;
+}
+
+textarea + .item + textarea,
+.drag-preview + .item {
+  margin-top: 12px;
+}
+
+.add-item {
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #cacaca;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.5s;
+}
+
+.add-item:hover {
+  opacity: 0.7;
+}
+
+.list-header > div {
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #b9b9b9;
+  margin-left: -1px;
+}
+
+textarea {
+  width: 100%;
+  font-size: 16px;
+  padding: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.list-title {
+  width: 100%;
+}
+
+.list-title-input {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+}
+
+.dashed {
+  border: 1px dashed #b9b9b9;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.items-container {
+  background-color: white;
+  padding: 12px 16px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

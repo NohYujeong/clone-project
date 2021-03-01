@@ -1,0 +1,23 @@
+{
+  "name": "clone-project",
+  "version": "1.0.0",
+  "description": "This is trello clone project in vanilla javascript",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NohYujeong/clone-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NohYujeong/clone-project/issues"
+  },
+  "homepage": "https://github.com/NohYujeong/clone-project#readme",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
