@@ -22,5 +22,5 @@
 npm run start
 
 // or
-node index.js
+node index.js & node server.js
 ```
