@@ -40,7 +40,10 @@
         .getElementById(inputID)
         .className.replace("hide", "show");
 
+      let strLength = document.getElementById(inputID).value.length;
+
       document.getElementById(inputID).focus();
+      document.getElementById(inputID).setSelectionRange(strLength, strLength);
     }
   }
 
