@@ -24,7 +24,7 @@
               </div>
               <div id="items-container-${id}" class="padding items-container">
                 ${items.reduce((acc, item) => (acc += Item(item)), "")}
-                <button id="add-item-${id}" class="color-info add-item droppable">Add a card</button>
+                <button id="add-item-${id}" class="color-info add-item droppable">Add a item</button>
               </div>
             </div>`;
   }
