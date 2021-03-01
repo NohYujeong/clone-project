@@ -6,24 +6,30 @@
       this.refresh("Board");
     }
 
+    // 페이지 리프레쉬
     refresh(page) {
       this.view.render(page);
       this.setEvents();
     }
 
+    // 페이지 내에 필요한 이벤트 설정
     setEvents() {
+      // Add a list 버튼 클릭 시 발생하는 이벤트
       this.view.addEvent("add-list", "click", () => this.createList());
 
+      // Add a item 버튼 클릭 시 발생하는 이벤트
       this.view.getElements(".add-item").forEach((button) => {
         this.view.addEvent(button.id, "click", () =>
           this.createItem(button.id.split("-")[2])
         );
       });
 
+      // list title 관련 이벤트
       this.view.getElements(".list-title").forEach((list) => {
         this.setTitleEditionEvents(list.id, list.id + "-input", "list");
       });
 
+      // item 관련 이벤트
       this.view.getElements(".item").forEach((item) => {
         this.setTitleEditionEvents(item.id, item.id + "-input", "item");
         this.view.addEvent(item.id, "dragstart", (event) =>
@@ -34,6 +40,7 @@
         );
       });
 
+      // dragenter 이벤트
       this.view.getElements(".droppable").forEach((element) => {
         this.view.addEvent(element.id, "dragenter", (event) =>
           this.dragEnter(event)
@@ -41,6 +48,7 @@
       });
     }
 
+    // list 생성
     createList() {
       this.model.addList({
         id: this.model.createRandomID(),
@@ -50,6 +58,7 @@
       this.refresh("Board");
     }
 
+    // item 생성
     createItem(listID) {
       this.model.addItem(listID, {
         id: this.model.createRandomID(),
@@ -58,42 +67,45 @@
       this.refresh("Board");
     }
 
+    // list 와 item 의 타이틀 변경을 위한 로직
     setTitleEditionEvents(textID, inputID, type) {
       let elementID = textID.split("-")[1];
+      let removed = false;
 
+      // title 을 입력할 수 있는 input element 의 show / hide 요소 스위치 이벤트
       this.view.addEvent(textID, "click", () =>
         this.view.showTitleInput(textID, inputID)
       );
 
-      this.view.addEvent(inputID, "blur", () =>
-        this.changeElementTitle(
-          type,
-          elementID,
-          this.view.getElement("#" + inputID).value
-        )
-      );
+      // keyup 이벤트 발생 시 list title 변경
+      this.view.addEvent(inputID, "keyup", (e) => {
+        if (e.code === "Enter" && type === "list") {
+          removed = true;
+          this.changeElementTitle(
+            type,
+            elementID,
+            this.view.getElement("#" + inputID).value
+          );
+        }
+      });
 
-      if (type !== "item") {
-        this.view.addEvent(
-          inputID,
-          "keyup",
-          (e) =>
-            e.code === "Enter" &&
-            this.changeElementTitle(
-              type,
-              elementID,
-              this.view.getElement("#" + inputID).value
-            )
-        );
-      }
+      // blur 이벤트 발생 시 title 변경
+      this.view.addEvent(inputID, "blur", () => {
+        if (!removed) {
+          this.changeElementTitle(
+            type,
+            elementID,
+            this.view.getElement("#" + inputID).value
+          );
+        }
+      });
     }
 
+    // element 의 title 변경
     changeElementTitle(type, id, value) {
       if (value === "") {
-        if (type !== "item") {
-          this.view.setInputError("list-" + id + "-title-input");
-        } else {
-          this.removeItem(id);
+        if (type === "item") {
+          this.model.removeItem(id);
         }
       } else {
         if (type === "list") {
@@ -101,16 +113,19 @@
         } else if (type === "item") {
           this.model.updateItemTitle(id, value);
         }
-        this.refresh("Board");
       }
+
+      this.refresh("Board");
     }
 
+    // drag event 중 dragstart
     dragStarted(event, id) {
       event.dataTransfer.setData("id", id);
       event.dataTransfer.dropEffect = "move";
       event.currentTarget.style.opacity = "0.6";
     }
 
+    // drag event 중 dragended
     dragEnded(event) {
       if (document.querySelector(".drag-preview")) {
         document.querySelector(".drag-preview").remove();
@@ -118,6 +133,7 @@
       event.target.style.opacity = "1";
     }
 
+    // drag event 중 dragenter
     dragEnter(event) {
       if (
         event.dataTransfer.types.includes("id") &&
