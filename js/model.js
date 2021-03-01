@@ -4,6 +4,7 @@
       this.board = { lists: [] };
     }
 
+    // 난수 ID 생성
     createRandomID() {
       return Array(5)
         .fill()
