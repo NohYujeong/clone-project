@@ -15,10 +15,13 @@
 - [x] Item Title 변경
 - [x] Drag & Drop 기능으로 Item 위치 변경
 - [x] 변경 내용, 서버를 통해 다른 클라이언트에도 동기화
+  - test
 
 ### 프로젝트 시작
 
 ```
+npm install
+
 // nodemon 이 깔려있을 경우
 npm run start
 
