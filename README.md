@@ -23,4 +23,7 @@ npm run start
 
 // or
 node index.js & node server.js
+
+client : http://localhost:3000
+server : http://localhost:8080
 ```
