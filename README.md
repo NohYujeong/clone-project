@@ -15,7 +15,7 @@
 - [x] Item Title 변경
 - [x] Drag & Drop 기능으로 Item 위치 변경
 - [x] 변경 내용, 서버를 통해 다른 클라이언트에도 동기화
-  - test
+  - `json-server` 를 사용하여 db.json 파일에 동기화 작업 진행
 
 ### 프로젝트 시작
 
@@ -30,4 +30,25 @@ node index.js & node server.js
 
 client : http://localhost:3000
 server : http://localhost:8080
+```
+
+### 프로젝트 구조
+
+```
+.
+├── README.md
+├── css
+│   └── style.css
+├── db.json // json-server 에 이용하는 json 파일
+├── index.html
+├── client.js // client run file
+├── js
+│   ├── api.js
+│   ├── app.js
+│   ├── controller.js
+│   ├── model.js
+│   ├── templates.js
+│   └── view.js
+├── package.json
+└── server.js // server run file
 ```

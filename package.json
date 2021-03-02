@@ -4,7 +4,7 @@
   "description": "This is trello clone project in vanilla javascript",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js & nodemon server.js"
+    "start": "nodemon client.js & nodemon server.js"
   },
   "repository": {
     "type": "git",
