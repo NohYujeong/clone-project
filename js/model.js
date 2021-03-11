@@ -29,6 +29,7 @@
 
     updateListTitle(listID, title) {
       this.getList(listID).title = title;
+      this.Api.post(this.board);
     }
 
     getListBoard() {
